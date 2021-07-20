@@ -1,0 +1,10 @@
+<div class="main-container">
+    <div class="image-btn-cont">
+        <button (click)="openFileUpload()">Uploade image</button>
+    </div>
+    <div class="image-cont">
+        <img *ngIf="returnImage!=''" class="" [src]="returnImage" />    
+    </div>
+    <div #textTitle class="file-name" [innerHTML]="truncateChar(fileName,textTitle.offsetWidth)"></div>
+</div>
+

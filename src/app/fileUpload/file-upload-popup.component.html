@@ -1,0 +1,62 @@
+<div id="file-upload-popup" class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row class="info-header" fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <p>Change Organization Image 
+        <span 
+          (click)="resetUpload()"
+          class="re-upload-image" 
+          *ngIf="imageAdded"
+        >
+          Re-upload Image
+        </span>
+      </p>
+      <button class="close-btn" (click)="matDialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <hr />
+  <div mat-dialog-content>
+    <div class="img-cont">
+      <ngx-file-drop *ngIf="!imageAdded" dropZoneLabel="Drop files here"  (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
+        (onFileLeave)="fileLeave($event)">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+          <button type="button" (click)="openFileSelector()">
+            <div class="img-desc row">
+              <div class="img-desc-icon">
+                <img src="../../assets/images/uploadIcon.png" />
+              </div>
+              <div class="img-desc-cont">
+                <h5><span>Upload file</span> or just drag and drop image here</h5>
+                <h6>supported formats jpeg, png, tiff</h6>
+              </div>
+            </div>
+          </button>
+        </ng-template>
+      </ngx-file-drop>
+      <div class="image-cropper-container" *ngIf="imageAdded">
+        <image-cropper class="image-cropper"
+          [imageChangedEvent]="imageChangedEvent" 
+          [maintainAspectRatio]="true" 
+          [containWithinAspectRatio]="false"
+          [aspectRatio]="1 / 1" 
+          format="png" 
+          [cropperMinWidth]="128" 
+          [resizeToWidth]="100" 
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()" 
+          (cropperReady)="cropperReady()" 
+          (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div mat-dialog-actions>
+    <img class="img-preview" [src]="croppedImage" />
+    <div>
+      <button (click)="matDialogRef.close()" class="cancel-btn">Cancel</button>
+      <button [disabled]="!imageAdded" (click)="matDialogRef.close({'image':croppedImage,'name':imageName})" class="save-btn">Save changes</button>
+    </div>
+  </div>
+</div>
