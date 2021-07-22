@@ -5,6 +5,23 @@
     <div class="image-cont">
         <img *ngIf="returnImage!=''" class="" [src]="returnImage" />    
     </div>
-    <div #textTitle class="file-name" [innerHTML]="truncateChar(fileName,textTitle.offsetWidth)"></div>
+    <div #textTitle class="file-name">{{truncateChar(fileName,textTitle.offsetWidth,null)}}</div>
+    <h1>Examples of string function</h1>
+    <p>(Resize the screen and refresh the page to see the responsive behaviour)</p>
+    <br/>
+    <h3>Full screen width</h3>
+    <div #textTitle1 class="">{{truncateChar("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textTitle1.offsetWidth,null)}}</div>
+    <br/>
+    <br/>
+    <h3>600px width with 20px font size</h3>
+    <div #textTitle2 class="test-1">{{truncateChar("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textTitle2.offsetWidth,'20px "Times New Roman"')}}</div>
+    <br/>
+    <br/>
+    <h3>400px width </h3>
+    <div #textTitle3 class="test-2">{{truncateChar("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",textTitle3.offsetWidth,null)}}</div>
+    <br/>
+    <br/>
+    <h3>Small Text</h3>
+    <div #textTitle4 class="">{{truncateChar('Small text for test',textTitle.offsetWidth,null)}}</div>
 </div>
 

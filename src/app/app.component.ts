@@ -19,8 +19,8 @@ export class AppComponent {
   ) {
   }
 
-  truncateChar(text: string, length: any): string {
-    return truncateChar(text,length)
+  truncateChar(text: string, length: any, font: any): string {
+    return truncateChar(text,length,font)
   }
 
   openFileUpload() {
